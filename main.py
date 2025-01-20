@@ -136,7 +136,11 @@ while True:
         print(f"阅读成功")
     else:
         errnum += 1
-        print("数据格式问题,异常退出！")
+        print(" cookie 已过期，尝试刷新...")
+        new_skey = get_wr_skey()
+        if new_skey:
+            cookies['wr_skey'] = new_skey
+            print(f"密钥刷新成功，新密钥：{new_skey}")
     if index == 300:
         print("阅读脚本运行已完成！")
         ##QLAPI.notify("微信阅读",f"阅读脚本运行已完成！共阅读{ss/60}分钟")
